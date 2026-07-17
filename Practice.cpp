@@ -140,6 +140,12 @@ int main()
 		}
 		std::cout << "Do you want to play again? (Y/N): ";
 		std::cin >> playagain;
+		while (playagain != 'Y' && playagain != 'y' && playagain != 'n' && playagain != 'N')
+{
+	std::cout << "Invalid Input-Please enter (Y/N): ";
+	std::cin >> playagain;
+
+}
 	}
 
 	std::cout << "Thank you for playing have a great day!";
