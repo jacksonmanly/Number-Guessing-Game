@@ -7,6 +7,7 @@ A C++ console game I built while learning C++.
 - Input validation
 - Attempt counter
 - Play again option
+- - Random number generation
 
 ## Concepts Used
 
@@ -19,6 +20,5 @@ A C++ console game I built while learning C++.
 
 ## Future Improvements
 
-- Random number generation
 - High score system
 - Remove duplicated code
