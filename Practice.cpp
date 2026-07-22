@@ -1,7 +1,5 @@
-// Practice.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
-#include <iostream>
+#include <iostream> 
+#include <random>
 void showmenu()
 {
 	std::cout << "Select a difficulty:\n";
@@ -12,11 +10,13 @@ void showmenu()
 
 int main()
 {
+	std::random_device rd;
+	std::mt19937 gen(rd());
 	char difficulty{};
 	int secretnumber{};
 	int guess{};
 	int attempts{ 0 };
-	char playagain{'Y'};
+	char playagain{ 'Y' };
 	while (playagain == 'Y' || playagain == 'y')
 	{
 		showmenu();
@@ -26,7 +26,7 @@ int main()
 		{
 			attempts = 0;
 			guess = 0;
-			secretnumber = 6;
+			secretnumber = std::uniform_int_distribution<>(1, 10)(gen);
 			std::cout << "You have entered the easy level!\n";
 			while (guess != secretnumber)
 			{
@@ -54,7 +54,7 @@ int main()
 						std::cout << "Very close!\n";
 					}
 				}
-				
+
 				else if (guess == secretnumber)
 				{
 					std::cout << "Congratulations you guess correctly in " << attempts << " attempts\n";
@@ -64,7 +64,8 @@ int main()
 		else if (difficulty == 'M' || difficulty == 'm')
 		{
 			attempts = 0;
-			secretnumber = 24;
+			guess = 0;
+			secretnumber = std::uniform_int_distribution<>(1, 50)(gen);
 			std::cout << "You have entered the medium level!\n";
 			while (guess != secretnumber)
 			{
@@ -103,7 +104,8 @@ int main()
 		else if (difficulty == 'H' || difficulty == 'h')
 		{
 			attempts = 0;
-			secretnumber = 37;
+			guess = 0;
+			secretnumber = std::uniform_int_distribution<>(1, 100)(gen);
 			std::cout << "You have entered the hard level!\n";
 			while (guess != secretnumber)
 			{
@@ -126,7 +128,7 @@ int main()
 				else if (guess < secretnumber)
 				{
 					std::cout << "Too low Guess again!\n";
-					if (std::abs(guess - secretnumber) <= 3)
+					if (std::abs(guess - secretnumber) <= 5)
 					{
 						std::cout << "Very close!\n";
 					}
@@ -141,14 +143,14 @@ int main()
 		std::cout << "Do you want to play again? (Y/N): ";
 		std::cin >> playagain;
 		while (playagain != 'Y' && playagain != 'y' && playagain != 'n' && playagain != 'N')
-{
-	std::cout << "Invalid Input-Please enter (Y/N): ";
-	std::cin >> playagain;
+		{
+			std::cout << "Invalid Input-Please enter (Y/N): ";
+			std::cin >> playagain;
 
-}
+		}
 	}
 
 	std::cout << "Thank you for playing have a great day!";
-	
-	     return 0;
+
+	return 0;
 }
